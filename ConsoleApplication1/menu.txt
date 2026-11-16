@@ -1,0 +1,29 @@
+========================================
+|                                      |
+|          Соревнования армий          |
+|                                      |
+|   1. Начать игру                     |
+|   2. Загрузить игру                  |
+|   3. Настройки                       |
+|   4. О программе                     |
+|   5. Выход                           |
+|                                      |
+========================================
+
+
+
+
+std::string load_menu() {
+    // выгрузка меню
+    std::ifstream menu;
+    menu.open("menu.txt", std::ios::in);
+    if (!menu.is_open()) {
+        std::cerr << "Menu loading error" << std::endl;
+        return "";
+    }
+
+    std::string data(std::istreambuf_iterator<char>(menu), (std::istreambuf_iterator<char>()));
+    menu.close();
+
+    return data;
+}
